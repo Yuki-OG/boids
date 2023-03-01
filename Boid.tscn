@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://boid_sprite.png" type="Texture" id=1]
 [ext_resource path="res://Boid.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
 
 [node name="Boid" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -18,3 +20,9 @@ __meta__ = {
 
 [node name="front" type="Position2D" parent="."]
 position = Vector2( 0, -15 )
+
+[node name="detection_radius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_radius"]
+scale = Vector2( 10, 10 )
+shape = SubResource( 1 )
