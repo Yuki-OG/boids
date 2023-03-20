@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://boid_sprite.png" type="Texture" id=1]
 [ext_resource path="res://Boid.gd" type="Script" id=2]
-
-[sub_resource type="CircleShape2D" id=1]
 
 [node name="Boid" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -11,18 +8,15 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.07, 0.07 )
-texture = ExtResource( 1 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="front" type="Position2D" parent="."]
-position = Vector2( 0, -15 )
-
 [node name="detection_radius" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_radius"]
-scale = Vector2( 10, 10 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="detection_radius"]
+position = Vector2( 0, 9 )
+scale = Vector2( 0.3, 0.3 )
+polygon = PoolVector2Array( 59, -449.9, 59, -448.7, 93, -443.7, 93, -442.5, 145, -428.5, 145, -427.4, 183, -412.4, 183, -411.2, 219, -393.2, 219, -392.1, 249, -373.1, 249, -372, 290, -339, 290, -337.8, 319, -308.8, 319, -306.7, 347, -273.7, 347, -271.6, 374, -229.6, 374, -227.5, 394, -186.5, 394, -183.4, 411, -134.3, 411, -128, 419, -94.2, 419, -93, 423, -56.1, 423, -2, 421.8, -2, 415.8, 53, 414.6, 53, 405.6, 94, 404.4, 94, 379.4, 160, 378.2, 160, 357.2, 198, 356.1, 198, 333.1, 232, 331.9, 232, 307.9, 261, 306.8, 261, 280.8, 287, 277.1, 287, 0.100006, -29, -272.1, 282, -273, 282, -277, 287, -280.6, 287, -285, 284.1, -285, 282.8, -325, 241.8, -325, 239.7, -359, 195.7, -359, 193.6, -389, 138.5, -389, 135.4, -411, 74.3, -411, 68.4, -421, 19.2, -421, 18, -423, -58, -421.8, -58, -413.8, -123, -412.5, -123, -396.5, -180, -395.4, -180, -380.4, -218, -379.1, -218, -346.2, -275, -345, -275, -309, -320, -307.8, -320, -278.8, -349, -276.7, -349, -247.7, -374, -245.6, -374, -201.6, -403, -199.4, -403, -143.4, -429, -139.3, -429, -91.3, -444, -85.4, -444, -57.2, -450, -56.1, -450, -29, -451.9, -29, -453.1 )
+
+[node name="Sprite" type="Polygon2D" parent="."]
+position = Vector2( 0, 6 )
+scale = Vector2( 0.126, 0.126 )
+color = Color( 0.494118, 0.784314, 0.92549, 1 )
+polygon = PoolVector2Array( 0, -142.857, 71.4286, 28.5714, 0, 0, -71.4286, 28.5714 )

@@ -1,17 +1,22 @@
 extends KinematicBody2D
 
-onready var front:Position2D = $front
+export(Vector2) var speed = Vector2(150, 150)
 
 var rng := RandomNumberGenerator.new()
-var speed:Vector2 = Vector2(200, 200)
+var velocity:Vector2
+var guide:Vector2
 
 func _ready() -> void:
-	rng.randomize()
-	set_rotation(rng.randf_range(0, 2))
-	
-	var direction = Vector2.direction_to(front.position)
-	print(direction, front.position)
-	speed *= direction
+	guide = random_point()
+	look_at(guide)
+	velocity = speed * position.direction_to(guide)
+
 
 func _process(delta:float) -> void:
-	move_and_slide(speed)
+	move_and_slide(velocity)
+	look_at(guide)
+
+
+func random_point() -> Vector2:
+	rng.randomize()
+	return rng.randf() * get_tree().root.size
